@@ -1,0 +1,120 @@
+Selenium WebDriver Notes
+
+-------------------------------------------------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------------------------------------------------
+
+-Every object may not have ID, className or name - XPath and CSS locators are preferred
+
+-Alpha numeric id may vary on every refresh - check before using id for locator in this case
+
+-Confirm the link object with anchor "a" tag
+
+-className should not have spaces, if it has spaces you can't use className - Compound classes cannot be accepted
+
+-Selenium ALWAYS identifies the first field, even if there are more same fields, it will use the first it finds
+
+-Selenium scans for fields from top left to bottom right
+
+-Double quotes inside double quotes are not accepted - Xpath double quotes need to be changed to single quotes
+
+-Xpath can be defined in n ways
+
+-Define Xpath for parent / tagNames - inspect webpage / HTML code
+
+-Right-click on highlighted HTML code and copy the code to generate Xpath
+
+-Combination of Implicit and Explicit Wait is an ideal solution
+
+-------------------------------------------------------------------------------------------------------------------------
+Validating CSS and xpath locators:
+-------------------------------------------------------------------------------------------------------------------------
+
+-To validate the Xpath locator u can write $x("//*[@id='forgot_password_link']") and enter it in browser console on
+correct page to see if correct item gets highlighted
+
+-To validate the CSS locator u can write $("//*[@id='forgot_password_link']") and enter it in browser console on correct
+page to see if correct item gets highlighted
+
+
+-------------------------------------------------------------------------------------------------------------------------
+Xpath selector:
+-------------------------------------------------------------------------------------------------------------------------
+
+
+-Relative Xpath is PREFERABLE WAY and does not depend on parent node (tagName): **//tagName[@attribute='value']**
+
+-custom Xpath based on HTML code: **//tagName[@attribute='value']**; example: //input[@value='Log In']
+
+-custom Xpath based on HTML code: **//*[@attribute='value']**; * looks for ANY tagName with specified attribute and value
+
+-Absolute Xpath depends on parent-child nodes **(tagName) / path; example: //section/div/div/div/ul/li**
+
+-Parent to child Xpath code: example (browser console): $x("//div[@class='RNNXgb']/div/div[2]/input")
+
+-Traverse to sibling element using Xpath code:
+**//*[@id='tablist1-tab1']/following-sibling::child tagName[2]**
+
+-Traversing back to parent element from child element using Xpath code:
+**//*[@attribute of child tagName='value of child tagName']/parent::[parent tagName]**
+example: //*[@id='tablist1-tab1']/parent::ul
+
+-Writing Xpath with only text being visible (no tagName), space needs to be included if there is space:
+**//*[text()=' value ']**; example: //*[text()=' Selenium ']
+
+-Regular / custom expression Xpath (if attribute value keeps changing partially):
+**//tagName[contains(@attribute,'value')]**
+
+-If multiple attributes have the same value, specify Xpath with index: **(//*[@attribute='value'])[index]**
+example: (//*[@autocapitalize='sentences'])[2]
+
+-Parent-child Xpath traverse: **//tagName[@attribute='value'] //tagName[@attribute='value']**
+
+-If Xpath starts with html, it is not reliable locator. In this case use another browser (with correct driver) to get Xpath
+
+-There is no direct way to get CSS in Chrome. You can find it in tool bar
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+CSS Selector:
+-------------------------------------------------------------------------------------------------------------------------
+
+-Regular / custom expression CSS: **tagName[attribute='value']**; example: div[class='identity first']
+
+-Custom expression for CSS code, if you don't want tagName mentioned: **[attribute='value']**;
+example: [class='identity first']
+
+-Custom CSS: **tagName#value** of attribute; example: input#password
+
+-Custom CSS: **#value** of attribute; example: #password
+
+-Custom CSS, if space is between class names it needs to be replaced with .: **.classname**; example: .input.identityinput
+
+-------------------------------------------------------------------------------------------------------------------------
+Assertions
+-------------------------------------------------------------------------------------------------------------------------
+
+-ASSERTIONS are for comparing arguments, best used in validations to see if the test passes or fails
+
+-When doing validation tests, important assertions are: **assertEqual/s, assertTrue, assertFalse**
+
+-------------------------------------------------------------------------------------------------------------------------
+Waits
+-------------------------------------------------------------------------------------------------------------------------
+
+-**Implicit Wait**: waits for n number of seconds before throwing exception error, if element is visible sooner than time we define, the test continues and does not wait any longer
+
+-**Explicit Wait**: can target specific element, does not influence other scenarios
+
+-**Fluent Wait**: checks with regular polling interval (we set polling rate) until web element is found or n-defined time runs out; Fluent Wait and WebDriverWait are 2 separate classes, both part of Explicit Wait
+Example where Fluent wait can be used: Credit card is accepted (message takes 3 sec to be displayed), your order is being processed (2nd message takes 7 sec to be displayed), confirmation
+
+-**Thread.sleep**: halts / stops an execution of test script for n-defined time of seconds, it is not preferable in real test scripts
+
+-------------------------------------------------------------------------------------------------------------------------
+Actions
+-------------------------------------------------------------------------------------------------------------------------
+
+-Actions class in Selenium is specifically designed to handle MouseOver and keyboard interactions with user
+
