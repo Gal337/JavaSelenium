@@ -15,15 +15,19 @@ public class HandlingCalendar {
         driver.get(link);
 //        Opening the calendar
         driver.findElement(By.xpath("//input[@id='ctl00_mainContent_view_date1']")).click();
-//        Saving days to list, variable dates
+//        Searching for specific month and iterating through months
+        while (!driver.findElement(By.className("ui-datepicker-title")).getText().contains("March")){
+            driver.findElement(By.className("ui-datepicker-next")).click();
+        }
+        //        Saving days to list, variable dates
         List<WebElement> dates = driver.findElements(By.className("ui-state-default"));
-//        Saving number of days to variable count
+//        Saving number of days to variable count by grabbing common attribute, putting it into list and iterate
         int count = driver.findElements(By.className("ui-state-default")).size();
 //        Iterating through days to specific day we want to choose
         for (int i = 0; i < count; i++) {
             String days = driver.findElements(By.className("ui-state-default")).get(i).getText();
 //            Checking if the day matches our chosen day and when it does it gets clicked
-            if (days.equalsIgnoreCase("28")) {
+            if (days.equalsIgnoreCase("17")) {
                 driver.findElements(By.className("ui-state-default")).get(i).click();
                 break;
             }
