@@ -12,18 +12,18 @@ public class Miscellaneous {
     public static void main(String[] args) throws IOException {
         System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\Java\\geckodriver-v0.32.0-win64\\geckodriver.exe");
         WebDriver driver = new FirefoxDriver();
-        String link = "www.google.com";
+        String link = "https://www.google.com";
 
         driver.manage().window().maximize();
 //        Deleting cookies or single cookie
-        driver.manage().deleteAllCookies();
+//        driver.manage().deleteAllCookies();
 //        driver.manage().deleteCookieNamed("sessionKey");
 
         driver.get(link);
 
 //        Capturing screenshot, declaring variable to save screenshot to
         File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//        Command to save the screenshot from variable to specified hard drive location
-        FileUtils.copyFile(src, new File("C://screenshot.png"));
+//        Command to save the screenshot from variable to specified folder on hard drive
+        FileUtils.copyFile(src, new File("C:\\Users\\user\\Documents\\screenshot.png"));
     }
 }
