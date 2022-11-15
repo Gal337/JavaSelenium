@@ -38,7 +38,7 @@ public class ECommerceApplication {
         driver.findElement(By.cssSelector("input.promoCode")).sendKeys("rahulshettyacademy");
         driver.findElement(By.cssSelector("button.promoBtn")).click();
 //        Waiting until the element is visible
-        w.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")));
+        w.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.promoInfo")));
 //        Returning the text in console after entering the promo code and applying it
         System.out.println(driver.findElement(By.cssSelector("span.promoInfo")).getText());
 
