@@ -27,8 +27,8 @@ public class TACourse {
 //        ===============
 //        Casting Example
 //        ===============
-        double a = 5.4;
-        int b = (int) a;
+        double e = 5.4;
+        int f = (int) e;
         System.out.println("Value A is: " + a);
         System.out.println("Value B is: " + b);
 //        ==========
