@@ -15,7 +15,7 @@ public class SeleniumTutorials {
     public static void main(String[] args) {
 
         System.setProperty("webdriver.edge.driver","C:\\Program Files\\Java\\edgedriver_win64\\msedgedriver.exe");
-//        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Java\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Java\\chromedriver_win32\\chromedriver.exe");
 
         WebDriver driver = new EdgeDriver();
         String link = "https://rahulshettyacademy.com/";
