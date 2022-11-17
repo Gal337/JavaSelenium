@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -20,6 +21,8 @@ public class IteratingOverLinks {
         driver.get(link1);
 //        Storing all the links from footer to a list variable
         List<WebElement> links = driver.findElements(By.cssSelector("li[class='gf-li'] a"));
+//        Implementing SOFT assertion
+        SoftAssert a = new SoftAssert();
 //        Iterating through list of links with enhanced for loop
         for (WebElement link : links) {
             String url = link.getAttribute("href");
@@ -29,13 +32,18 @@ public class IteratingOverLinks {
             connection.connect();
             int respCode = connection.getResponseCode();
             System.out.println(respCode);
+            a.assertTrue(respCode < 400,"The link with text " + link.getText() + " is broken. Code: " + respCode);
+//            ====================================================================================================
 //            If server response code is higher than 400 the test fails
-            if (respCode > 400) {
-                System.out.println("The link with text " + link.getText() + " is broken. Code: " + respCode);
-                Assert.assertTrue(false);
+//            if (respCode > 400) {
+//                System.out.println("The link with text " + link.getText() + " is broken. Code: " + respCode);
+//                HARD assertion - stops the test
+//                Assert.assertTrue(false);
             }
+//            ====================================================================================================
+//        assertAll is used to report the problems
+        a.assertAll();
 
         }
 
     }
-}
