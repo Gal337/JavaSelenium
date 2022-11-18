@@ -1,7 +1,11 @@
+import org.testng.annotations.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class JavaStreams {
+
+    @Test
     public static void main(String[] args) {
 //        Creating array list object
         List<String> names = new ArrayList<String>();
@@ -21,8 +25,19 @@ public class JavaStreams {
             }
         }
         System.out.println(count);
-
-
-
     }
-}
+
+    @Test
+    public void streamFilter(){
+        List<String> names = new ArrayList<String>();
+        names.add("Abhijeet");
+        names.add("Don");
+        names.add("Abu");
+        names.add("Alekhya");
+        names.add("Ram");
+//        Converting existing array list into stream and iterating through list
+        long c = names.stream().filter(n->n.startsWith("A")).count();
+        System.out.println(c);
+    }
+    }
+
