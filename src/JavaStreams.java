@@ -20,6 +20,7 @@ public class JavaStreams {
                 count++;
             }
         }
+//        Printing the count of names
         System.out.println(count);
 
 
