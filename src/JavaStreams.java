@@ -39,16 +39,18 @@ public class JavaStreams {
 //        Converting existing array list into stream and iterating through list
         long c = names.stream().filter(n->n.startsWith("A")).count();
         System.out.println(c);
-//        Instead of having a list of names, you can also directly put names for values
+//        Instead of having a list of names, you can also directly put names for values and counting them
         long d = Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Ram").filter(n->
         {
             n.startsWith("A");
-            return false;
+            return true;
         }).count();
         System.out.println(d);
 
-//        Printing all the names of array that are longer than 4 letters
-        names.stream().filter(n -> n.length()>4);
+//        Printing all the names of array that are longer than 4 characters
+        names.stream().filter(n -> n.length()>4).forEach(n -> System.out.println(n));
+//        Printing 1 name that is longer than 4 characters
+        names.stream().filter(n -> n.length()>4).limit(1).forEach(n -> System.out.println(n));
     }
     }
 
