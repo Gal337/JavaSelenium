@@ -2,6 +2,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class JavaStreams {
 
@@ -38,6 +39,16 @@ public class JavaStreams {
 //        Converting existing array list into stream and iterating through list
         long c = names.stream().filter(n->n.startsWith("A")).count();
         System.out.println(c);
+//        Instead of having a list of names, you can also directly put names for values
+        long d = Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Ram").filter(n->
+        {
+            n.startsWith("A");
+            return false;
+        }).count();
+        System.out.println(d);
+
+//        Printing all the names of array that are longer than 4 letters
+        names.stream().filter(n -> n.length()>4);
     }
     }
 
