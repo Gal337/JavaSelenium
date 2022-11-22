@@ -96,8 +96,9 @@ public class JavaStreams {
 //        Printing number on specific index after sorting the numbers
         List<Integer> li = values.stream().distinct().sorted().collect(Collectors.toList());
         System.out.println(li.get(2));
-
     }
+
+
 
     }
 
