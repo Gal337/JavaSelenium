@@ -89,6 +89,10 @@ public class JavaStreams {
                 .collect(Collectors.toList());
         System.out.println(ls.get(0));
 
+//        Creating a list of numbers
+        List<Integer> values = Arrays.asList(3,2,2,5,6,1,9,6);
+//        Printing unique numbers from array
+        values.stream().distinct().forEach(n -> System.out.println(n));
 
     }
 
