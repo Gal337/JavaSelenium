@@ -1,7 +1,11 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class JavaStreams {
@@ -52,5 +56,41 @@ public class JavaStreams {
 //        Printing 1 name that is longer than 4 characters
         names.stream().filter(n -> n.length()>4).limit(1).forEach(n -> System.out.println(n));
     }
+
+    @Test
+    public void streamMap() {
+//        Printing names with last character being m and converting the names to upper case
+        Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Ram").filter(n -> n.endsWith("m")).map(n -> n.toUpperCase()).forEach(n -> System.out.println(n));
+
+//        Printing the names which start with character a with uppercase and sorting them
+        List<String> names = Arrays.asList("Abhijeet", "Don", "Alekhya", "Adam", "Ram");
+        names.stream().filter(n -> n.startsWith("A")).sorted().map(n -> n.toUpperCase()).forEach(n -> System.out.println(n));
+
+//        Merging 2 lists into one
+        List<String> names1 = new ArrayList<String>();
+        names1.add("Man");
+        names1.add("Don");
+        names1.add("Woman");
+
+        List<String> names2 = Arrays.asList("Abhijeet", "Don", "Alekhya", "Adam", "Ram");
+//        Merging 2 lists into one
+        Stream<String> newStream = Stream.concat(names1.stream(), names2.stream());
+//        Sorting the names on the list by alphabet
+//        newStream.sorted().forEach(n -> System.out.println(n));
+        boolean flag = newStream.anyMatch(n -> n.equalsIgnoreCase("Adam"));
+        System.out.println(flag);
+        Assert.assertTrue(flag);
+    }
+
+    @Test
+    public void streamCollect() {
+//        Creating a list upon all the modifications created previously
+        List<String> ls = Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Ram").filter(n -> n.endsWith("a")).map(n -> n.toUpperCase())
+                .collect(Collectors.toList());
+        System.out.println(ls.get(0));
+
+
+    }
+
     }
 
