@@ -93,6 +93,9 @@ public class JavaStreams {
         List<Integer> values = Arrays.asList(3,2,2,5,6,1,9,6);
 //        Printing unique numbers from array
         values.stream().distinct().forEach(n -> System.out.println(n));
+//        Printing number on specific index after sorting the numbers
+        List<Integer> li = values.stream().distinct().sorted().collect(Collectors.toList());
+        System.out.println(li.get(2));
 
     }
 
