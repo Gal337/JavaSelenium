@@ -28,8 +28,18 @@ public class TableSortingJavaStream {
 //        Comparing original list to sorted list
         Assert.assertTrue(ogList.equals(soList));
 //        Scan the name column with getText -> example: Rice -> print the price of the Rice
-        List<String> price = items.stream().filter(i -> i.getText().contains("Banana")).map(i -> getPriceVeggie(i)).collect(Collectors.toList());
-        price.forEach(i -> System.out.println(i));
+        List<String> price;
+//        Using DO WHILE loop to iterate through pages and finding the desired item and getting the price
+        do {
+            List<WebElement> column = driver.findElements(By.xpath("//tr/td[1]"));
+            price = column.stream().filter(i -> i.getText().contains("Mango")).map(i -> getPriceVeggie(i)).collect(Collectors.toList());
+            price.forEach(i -> System.out.println(i));
+
+            if (price.size() < 1) {
+                driver.findElement(By.cssSelector("[aria-label='Next']")).click();
+        }
+        } while (price.size() < 1);
+
 
     }
 
