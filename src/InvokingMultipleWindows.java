@@ -41,6 +41,8 @@ public class InvokingMultipleWindows  {
 //        Capturing screenshot of web element
         File file = name.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File("webElement.png"));
-
+//        Getting the height and width of the screenshot
+        System.out.println(name.getRect().getDimension().getHeight());
+        System.out.println(name.getRect().getDimension().getWidth());
     }
 }
