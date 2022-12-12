@@ -2,10 +2,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 public class RelativeLocators {
     public static void main(String[] args) {
+//        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Java\\chromedriver_win32\\chromedriver.exe");
+//        WebDriver driver = new ChromeDriver();
+
         System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\Java\\geckodriver-v0.32.0-win64\\geckodriver.exe");
         WebDriver driver = new FirefoxDriver();
         String link = "https://rahulshettyacademy.com/angularpractice/";
