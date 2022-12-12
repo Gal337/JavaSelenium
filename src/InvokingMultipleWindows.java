@@ -1,13 +1,14 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WindowType;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
 public class InvokingMultipleWindows  {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Java\\chromedriver_win32\\chromedriver.exe");
 //        WebDriver driver = new ChromeDriver();
 
@@ -34,8 +35,12 @@ public class InvokingMultipleWindows  {
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         String courseName = driver.findElements(By.cssSelector("a[href*='https://courses.rahulshettyacademy.com/p']")).get(5).getText();
         driver.switchTo().window(parentWindowId);
-        driver.findElement(By.cssSelector("[name='name']")).sendKeys(courseName);
-
+//        Saving web element to variable
+        WebElement name = driver.findElement(By.cssSelector("[name='name']"));
+        name.sendKeys(courseName);
+//        Capturing screenshot of web element
+        File file = name.getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file, new File("webElement.png"));
 
     }
 }
