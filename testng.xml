@@ -11,4 +11,9 @@
             </class>
         </classes>
     </test>
+<!--    <test name="WebLogin">-->
+<!--        <classes>-->
+<!--                <class name="test.day3"/>-->
+<!--        </classes>-->
+    </test>
 </suite>
