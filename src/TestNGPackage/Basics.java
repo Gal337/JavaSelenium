@@ -15,3 +15,13 @@ public class Basics {
         System.out.println("Bye");
     }
 }
+
+//    @Test
+//    public void WebLogin () {
+//        //Write Selenium code here
+//    }
+//
+//    @Test
+//    public void LoginAPI() {
+//        //Write REST API code here
+//    }
